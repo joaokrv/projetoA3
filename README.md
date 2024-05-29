@@ -32,7 +32,7 @@ Este projeto é licenciado sob a [Licença MIT](https://opensource.org/licenses/
 
 ## Contato
 
-Para mais informações, entre em contato através do meu [`Linkedin`](https://www.linkedin.com/in/joaokrv).
+Para mais informações, entre em contato através do meu [`Linkedin`](https://www.linkedin.com/in/joaokrv), ou pelo meu [`Instagram`](https://www.instagram.com/joaokrv).
 
 ## IA
 
