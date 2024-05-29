@@ -37,3 +37,7 @@ Para mais informações, entre em contato através do meu [`Linkedin`](https://w
 ## IA
 
 Utilizei a ajuda do Copilot da Microsoft, juntamente com o ChatGPT, para me ajudar no README, assim como pedi para analisarem minha proposta de problema, no caso o Estoque e Vendas. Fiz algumas alterações, principalmente nos links, e também sobre a parte de contato, enunciado de tudo, além de adicionar outras informações. Pedi alguns exemplos para ambos também, assim conseguindo me preparar e ter mais ideias de como fazer. Além disso, utilizei ambos para iniciar na Markdown, utilizada aqui. Primeiro, usei tags em HTML, contudo, depois pedi para que as IAs me explicassem sobre as funções em Markdown. Funcionou relativamente bem, mas ainda tenho algumas dúvidas.
+
+## Importante
+
+Com o tempo irei colocando o andamento do projeot, mesmo que não esteja correto para que vocês possam me ajudar, dar sugestões e marcar meu progresso também.
