@@ -8,11 +8,11 @@
 
 Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de controle de estoque e registro de vendas para uma loja fictícia. A proposta visa resolver um problema real através da programação, proporcionando uma solução eficiente para gerenciar o estoque de produtos da loja e registrar todas as transações de venda.
 
-## Funcionalidades Principais
+## Principais funcionalidades:
 
-- Adição, remoção e atualização de itens no estoque.
-- Registro detalhado de vendas, incluindo informações sobre os produtos vendidos, quantidade, preço unitário e data da venda.
-- Cálculo automático do lucro com base nas vendas registradas.
+- Adição, remoção e atualização de estoque.
+- Registro de vendas, incluindo informações sobre os produtos vendidos, quantidade, preço unitário e data da venda.
+- Cálculo do lucro com base nas vendas registradas.
 
 ## Tecnologia Utilizada
 
@@ -20,19 +20,19 @@ Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de 
 
 ## Pré-requisitos
 
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/downloads/) instalado
+- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/downloads/){:target="_blank"} instalado
 - IDE (Integrated Development Environment):
-  - [Visual Studio Code](https://code.visualstudio.com/download)
-  - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/nextversion/)
-  - [Eclipse](https://www.eclipse.org/downloads/packages/installer)
+  - [Visual Studio Code](https://code.visualstudio.com/download){:target="_blank"}
+  - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/nextversion/){:target="_blank"}
+  - [Eclipse](https://www.eclipse.org/downloads/packages/installer){:target="_blank"}
 
 ## Licença
 
-Este projeto é licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT). Consulte o arquivo LICENSE para obter mais detalhes.
+Este projeto é licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT){:target="_blank"}. Consulte o arquivo LICENSE para obter mais detalhes.
 
 ## Contato
 
-Para mais informações, entre em contato através do meu [`Linkedin`](https://www.linkedin.com/in/joaokrv), ou pelo meu [`Instagram`](https://www.instagram.com/joaokrv).
+Para mais informações, entre em contato através do meu [`Linkedin`](https://www.linkedin.com/in/joaokrv){:target="_blank"}, ou pelo meu [`Instagram`](https://www.instagram.com/joaokrv){:target="_blank"}.
 
 ## IA
 
