@@ -20,19 +20,19 @@ Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de 
 
 ## Pré-requisitos
 
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/downloads/){:target="_blank"} instalado
+- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/downloads/) instalado
 - IDE (Integrated Development Environment):
-  - [Visual Studio Code](https://code.visualstudio.com/download){:target="_blank"}
-  - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/nextversion/){:target="_blank"}
-  - [Eclipse](https://www.eclipse.org/downloads/packages/installer){:target="_blank"}
+  - [Visual Studio Code](https://code.visualstudio.com/download)
+  - [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/nextversion/)
+  - [Eclipse](https://www.eclipse.org/downloads/packages/installer)
 
 ## Licença
 
-Este projeto é licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT){:target="_blank"}. Consulte o arquivo LICENSE para obter mais detalhes.
+Este projeto é licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT). Consulte o arquivo LICENSE para obter mais detalhes.
 
 ## Contato
 
-Para mais informações, entre em contato através do meu [`Linkedin`](https://www.linkedin.com/in/joaokrv){:target="_blank"}, ou pelo meu [`Instagram`](https://www.instagram.com/joaokrv){:target="_blank"}.
+Para mais informações, entre em contato através do meu [`Linkedin`](https://www.linkedin.com/in/joaokrv), ou pelo meu [`Instagram`](https://www.instagram.com/joaokrv).
 
 ## IA
 
