@@ -18,7 +18,7 @@
 
 ## Diagrama de classes
 
-4. O [Diagrama de classes](https://lucid.app/lucidchart/86a17c47-f77d-47ba-9248-512c1a486899/edit?view_items=IPYHlxa1VA5E&invitationId=inv_0dd01c7d-7bbd-4ad6-a7e9-81ba78263df6) foi feito pelo site https://lucid.app/.
+4. O [Diagrama de classes](https://lucid.app/lucidchart/86a17c47-f77d-47ba-9248-512c1a486899/edit?view_items=IPYHlxa1VA5E&invitationId=inv_0dd01c7d-7bbd-4ad6-a7e9-81ba78263df6) está sendo feito pelo site https://lucid.app.
 
 ## Tecnologia Utilizada
 
