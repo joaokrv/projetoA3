@@ -6,13 +6,13 @@
 
 ## Descrição
 
-Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de controle de estoque e registro de vendas para uma loja fictícia. A proposta visa resolver um problema real através da programação, proporcionando uma solução eficiente para gerenciar o estoque de produtos da loja e registrar todas as transações de venda.
+Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de controle de estoque para uma loja fictícia. A proposta visa resolver um problema real através da programação, proporcionando uma solução eficiente para gerenciar o estoque de produtos da loja.
 
 ## Principais funcionalidades:
 
-- Adição, remoção e atualização de estoque.
-- Registro de vendas, incluindo informações sobre os produtos vendidos, quantidade, preço unitário e data da venda.
-- Cálculo do lucro com base nas vendas registradas.
+- Controle de estoque(adicionar e remover itens).
+- Registro quantidade, preço unitário, preço total.
+- Cálculo da simulação do lucro com base na quantidade em estoque.
 
 ## Tecnologia Utilizada
 
@@ -36,7 +36,7 @@ Para mais informações, entre em contato através do meu [`Linkedin`](https://w
 
 ## IA
 
-Utilizei a ajuda do Copilot da Microsoft, juntamente com o ChatGPT, para me ajudar no README, assim como pedi para analisarem minha proposta de problema, no caso o Estoque e Vendas. Fiz algumas alterações, principalmente nos links, e também sobre a parte de contato, enunciado de tudo, além de adicionar outras informações. Pedi alguns exemplos para ambos também, assim conseguindo me preparar e ter mais ideias de como fazer. Além disso, utilizei ambos para iniciar na Markdown, utilizada aqui. Primeiro, usei tags em HTML, contudo, depois pedi para que as IAs me explicassem sobre as funções em Markdown. Funcionou relativamente bem, mas ainda tenho algumas dúvidas.
+Utilizei a ajuda do Copilot da Microsoft, juntamente com o ChatGPT, para me ajudar no README, assim como pedi para analisarem minha proposta de problema, no caso o Estoque. Fiz alterações além de adicionar outras informações, pedi alguns exemplos para ambos também, assim conseguindo me preparar e ter mais ideias de como fazer.
 
 ## Importante
 
