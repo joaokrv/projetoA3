@@ -6,7 +6,7 @@
 
 ## Problema
 
-1. Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de controle de estoque para uma loja fictícia. Para entrada de dados exige o nome do produto, quantidade, seu valor de custo e de venda, já na saída deverá sair de maneira com que mostre uma simulação do lucro com o produto, o produto mais caro, o mais barato, o com maior quantidade e com menor também. A proposta visa resolver um problema real através da programação, proporcionando uma solução eficiente para gerenciar o estoque de produtos da loja e fornecer informações ao comerciante.
+1. Este projeto, desenvolvido como parte do trabalho A3, consiste em um sistema de controle de estoque para uma loja fictícia. Para entrada de dados exige o nome do produto, quantidade, seu valor de custo e de venda, já na saída deverá sair de maneira com que mostre uma simulação do lucro com o produto, o valor em estoque e as informações de cada produto, além de dizer se foi adicionado ou nao com sucesso ao estoque. A proposta visa resolver um problema real através da programação, proporcionando uma solução eficiente para gerenciar o estoque de produtos da loja e fornecer informações ao comerciante.
 
 ## Requisitos funcionais:
 
