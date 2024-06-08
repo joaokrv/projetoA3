@@ -43,7 +43,7 @@ Para mais informações, entre em contato através do meu [`Linkedin`](https://w
 
 ## IA
 
-Utilizei a ajuda do Copilot da Microsoft, juntamente com o ChatGPT, para me ajudar no README, assim como pedi para analisarem minha proposta de problema, no caso o Estoque. Fiz alterações além de adicionar outras informações, pedi alguns exemplos para ambos também, assim conseguindo me preparar e ter mais ideias de como fazer.
+Utilizei a ajuda do Gemini, juntamente com o ChatGPT, para me ajudar no README, assim como pedi para analisarem minha proposta de problema, no caso. Fiz alterações além de adicionar outras informações, pedi alguns exemplos para ambos também, assim conseguindo me preparar e ter mais ideias de como fazer. Além disso, pedi constantemente para que analisassem o código, dessa forma sempre fui atualizando de acordo com o que fazia sentido. Bati muita cabeça por causa disso, principalmente porque o chatGPT é muito burro e eu usei só ele no começo, atualmente só estou utilizando o Gemini para analisar o codigo.
 
 ## Importante
 
