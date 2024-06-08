@@ -11,7 +11,6 @@
 ## Requisitos funcionais:
 
 2 e 3. Para os requisitos funcionais, utilizei a IA Gemini. De acordo com a IA deveria ter diversos outros requisitos, contudo os que eu achei mais importante foram esses:
-- Estoque mínimo e máximo.
 - Controle de estoque(adicionar e remover itens).
 - Registro quantidade, preço unitário, preço total.
 - Cálculo da simulação do lucro com base na quantidade em estoque.
