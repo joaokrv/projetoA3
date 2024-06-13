@@ -225,12 +225,6 @@ public class Estoque {
             if (novoPrecoVenda < produto.getCostPrice()) {
                 throw new IllegalArgumentException("Preço de venda deve ser maior ou igual ao preço de venda.");
             }
-    
-            // Confirmação do usuario
-            System.out.println("Deseja realmente atualizar as informações do produto? (S/N): ");
-            String confirmacao = in.nextLine().toUpperCase();
-
-            if (confirmacao.equals("S")) {
 
                 // Atualiza as informações do produto
                 produto.setId(novoId);
@@ -259,18 +253,10 @@ public class Estoque {
                 try (FileWriter writer = new FileWriter(fileName, true)) {
                     writer.write(newProduct);
                 }
-
                 // Retorna true em caso de sucesso
                 return true;
             
-            // Retorna falso em caso de cancelamento ou erro
-            } else if (confirmacao.equals("N")) {
-                System.out.println("Atualização cancelada.");
-                return false;
-            } else {
-                System.err.println("Entrada inválida. Digite S (sim) ou N (não).");
-                return false;
-            }           
+        // Retorna falso em caso de cancelamento ou erro        
         } catch (IllegalArgumentException e) {
             System.err.println("Erro: " + e.getMessage());
             return false;
@@ -282,6 +268,7 @@ public class Estoque {
             in.close(); // Fechar o Scanner para liberar recursos
         }
     }
+    
 
     public void listarProdutos() {
         for (Produtos produto : listProducts) {
