@@ -21,54 +21,75 @@ public class Estoque {
     }
 
     //Metodo para adicionar o produto na lista e registra-lo no arquivo Registro
-    public void addProduto(Produtos produto) {
-        System.out.print("Digite o nome do produto: ");
-        produto.setName(in.nextLine());
-
+    public void addProduto() {
+        System.out.print("-------------------\nDigite o nome do produto: ");
+        String name = in.nextLine();
+    
         System.out.print("\nDigite o ID do produto: ");
-        produto.setId(in.nextInt());
-
+        int id = in.nextInt();
+        in.nextLine(); // Consumir a nova linha pendente
+    
         System.out.print("\nDigite a quantidade do produto: ");
-        produto.setQuantity(in.nextInt());
-
+        int quantidade = in.nextInt();
+        in.nextLine(); // Consumir a nova linha pendente
+    
         System.out.print("\nDigite a descrição do produto: ");
-        produto.setDesc(in.next());
-
+        String desc = in.nextLine();
+    
         System.out.print("\nDigite o preço de custo do produto: R$");
-        produto.setCostPrice(in.nextDouble());
-
+        double precoCusto = in.nextDouble();
+    
         System.out.print("\nDigite o preço de venda: R$");
-        produto.setSellPrice(in.nextDouble());
-
-        listProducts.add(produto);
-        registrarProduto(produto);
+        double precoVenda = in.nextDouble();
+        in.nextLine(); // Consumir a nova linha pendente
+        
+        double valorEstoque = quantidade * precoCusto;
+        double valorLucro = quantidade * (precoVenda - precoCusto);
+        
+        Produtos novoProduto = new Produtos(name, id, quantidade, desc, precoCusto, precoVenda, valorEstoque, valorLucro);
+    
+        listProducts.add(novoProduto);
+        registrarProduto(novoProduto);
     }
 
     //Metodo para remover o produto da lista e colocar no arquivo Registro que foi removido
     public void removeProduto(Produtos produto) throws IOException {
-        System.out.println("Digite o Nome do produto que você deseja remover: ");
-        String nome = in.nextLine();
-
-        System.out.println("Agora digite o ID");
+        // Pede a entrada de dados do usuário.
+        System.out.println("Digite o ID do produto que você está buscando: ");
+        if (!in.hasNextInt()) {
+            throw new InputMismatchException("ID do produto inválido. Digite um número.");
+        }
         int id = in.nextInt();
-        
+    
+        in.nextLine(); // Consome a quebra de linha
+    
+        System.out.println("Digite o nome agora: ");
+        if (!in.hasNextLine()) {
+            throw new InputMismatchException("Nome do produto inválido. Digite algo.");
+        }
+        String nome = in.nextLine();
+    
         // Buscar o produto na lista
-        buscarProduto(nome, id);
-        
-        listProducts.remove(produto);
-
-        // Formatar a entrada de dados com formatação de números e alinhamento
-        LocalDateTime dataHoraAtual = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        String dataHoraFormatada = dataHoraAtual.format(formatter);
-        String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-        DecimalFormat df = new DecimalFormat("#,##0.00");
-        String produtoRemovido = String.format("Nome do produto %s removidio | DATA: %s| HORA: %s|\n---Dados do produto removido---\nProduto: %s | ID: %d | Quantidade: %d |Descrição: %s | Preço de Custo: R$%s | Preço de Venda: R$%s |\n--------------------",
-            produto.getName(), dataHoraFormatada, horaFormatada, produto.getName(), produto.getName(), produto.getId(), produto.getQuantity(), produto.getDesc(),
-            df.format(produto.getCostPrice()), df.format(produto.getSellPrice()));
-
-        try (FileWriter writer = new FileWriter(fileName)) {
-            writer.write(produtoRemovido);
+        Produtos produtoEncontrado = buscarProduto(nome, id);
+    
+        if (produtoEncontrado != null) {
+            listProducts.remove(produtoEncontrado);
+    
+            // Formatar a entrada de dados com formatação de números e alinhamento
+            LocalDateTime dataHoraAtual = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            String dataHoraFormatada = dataHoraAtual.format(formatter);
+            String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            String produtoRemovido = String.format("DATA: %s| HORA: %s|\nDados do produto removido\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
+                    dataHoraFormatada, horaFormatada, produtoEncontrado.getName(), produtoEncontrado.getId(), produtoEncontrado.getQuantity(), produtoEncontrado.getDesc(),
+                    df.format(produtoEncontrado.getCostPrice()), df.format(produtoEncontrado.getSellPrice()));
+    
+            try (FileWriter writer = new FileWriter(fileName, true)) {
+                writer.write(produtoRemovido);
+            }
+        } else {
+            System.out.println("Produto não encontrado.");
         }
     }
 
@@ -77,7 +98,7 @@ public class Estoque {
 
         // Formatar a entrada de dados com formatação de números e alinhamento
         DecimalFormat df = new DecimalFormat("#,##0.00");
-        String registerProduct = String.format("Produto: %s | ID: %d | Quantidade: %d | Descrição: %s | Preço de Custo: R$%s | Preço de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n",
+        String registerProduct = String.format("----------------------\nProduto: %s | ID: %d | Quantidade: %d | Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n",
                 produto.getName(), produto.getId(), produto.getQuantity(), produto.getDesc(),
                 df.format(produto.getCostPrice()), df.format(produto.getSellPrice()),
                 df.format(produto.getCostPrice() * produto.getQuantity()),
@@ -97,10 +118,13 @@ public class Estoque {
         DecimalFormat df = new DecimalFormat("#,##0.00");
 
         try {
+            final int buscaId = id; // id final para uso no lambda
+            Produtos produtoEncontrado;
+
             //BUSCA POR ID
             if (id > 0) {
-                Produtos produtoEncontrado = listProducts.stream()
-                 .filter(p -> p.getId() == id)
+                produtoEncontrado = listProducts.stream()
+                .filter(p -> p.getId() == buscaId)
                  .findFirst()
                  .orElse(null);
                 
@@ -133,6 +157,7 @@ public class Estoque {
 
     //Metodo para dar print no dados do produto
     private void printProdutoInfo(Produtos produto, DecimalFormat df) {
+        System.out.println("------------------------");
         System.out.println("Produto encontrado:");
         System.out.println("Nome: " + produto.getName());
         System.out.println("ID: " + produto.getId());
@@ -142,25 +167,66 @@ public class Estoque {
         System.out.println("Preço de Venda: R$" + df.format(produto.getSellPrice()));
         System.out.println("Valor em estoque: R$" + df.format(produto.getCostPrice() * produto.getQuantity()));
         System.out.println("Lucro estimado: R$" + df.format((produto.getSellPrice() - produto.getCostPrice()) * produto.getQuantity()));
+        System.out.println("------------------------");
     }
 
+    @SuppressWarnings("resource")
     public boolean atualizarProduto(Produtos produto) throws IOException {
         Scanner in = new Scanner(System.in);
     
         try {
             // Pede a entrada de dados do usuário.
             System.out.println("Digite o ID do produto que você está buscando: ");
+            if (!in.hasNextInt()) {
+                throw new InputMismatchException("ID do produto inválido. Digite um número.");
+            }
             int id = in.nextInt();
-
+        
+            in.nextLine(); // Consome a quebra de linha
+        
             System.out.println("Digite o nome agora: ");
+            if (!in.hasNextLine()) {
+                throw new InputMismatchException("Nome do produto inválido. Digite algo.");
+            }
             String nome = in.nextLine();
 
             // Buscar o produto na lista
             buscarProduto(nome, id);
+            
+            // Pede nome novo do produto
+            System.out.println("\nAtualizar Produto");
+            System.out.print("Nome: ");
+            String novoNome = in.nextLine();
 
-            // Pede o novo ID
-            System.out.println("Digite o novo ID: ");
+            System.out.print("ID do produto: ");
             int novoId = in.nextInt();
+            in.nextLine(); // Consume newline character
+        
+            System.out.print("Descrição: ");
+            String novaDesc = in.nextLine();
+                    
+            System.out.print("Quantidade: ");
+            int novaQuantidade = in.nextInt();
+            in.nextLine(); // Consume newline character
+        
+            System.out.print("Preço de custo: R$ ");
+            double novoPrecoCusto = in.nextDouble();
+            in.nextLine(); // Consume newline character
+        
+            System.out.print("Preço de venda: R$ ");
+            double novoPrecoVenda = in.nextDouble();
+            in.nextLine(); // Consume newline character
+
+            double valorLucro = (novoPrecoVenda - novoPrecoCusto) * novaQuantidade;
+            double valorTotalAtualizado = novaQuantidade * novoPrecoCusto;
+            
+            //Fechamento do scanner
+            in.close();
+
+            // Validação do novo nome
+            if (novoNome == null) {
+                throw new IllegalArgumentException("\nNovo nome não pode ser nulo.");
+            }
     
             // Validação do novo ID
             if (novoId < 0) {
@@ -173,19 +239,6 @@ public class Estoque {
                     throw new IllegalArgumentException("ID já existe na lista para o produto: " + outroProduto.getName());
                 }
             }
-
-            // Pede nome novo do produto
-            System.out.println("Digite o novo nome: ");
-            String novoNome = in.next();
-            
-            // Validação do novo nome
-            if (novoNome == null) {
-                throw new IllegalArgumentException("Novo nome não pode ser nulo.");
-            }
-
-            // Pede nova descrição do produto
-            System.out.println("Digite a nova descrição: ");
-            String novaDesc = in.nextLine();
     
             // Validação da nova descrição
             if (novaDesc == null) {
@@ -198,64 +251,65 @@ public class Estoque {
                     throw new IllegalArgumentException("Descrição já existe na lista.");
                 }
             }
-
-            // Pede nova quantidade do produto
-            System.out.println("Digite a nova quantidade: ");
-            int novaQuantidade = in.nextInt();
     
             // Validação da nova quantidade
             if (novaQuantidade < 0) {
                 throw new IllegalArgumentException("Quantidade deve ser maior ou igual a zero.");
             }
 
-            // Pede o preço novo do produto
-            System.out.println("Digite o novo preço de custo: ");
-            double novoPrecoCusto = in.nextDouble();
-    
-            // Validação do novo Preço de Custo
-            if (novoPrecoCusto > produto.getSellPrice()) {
-                throw new IllegalArgumentException("Preço de custo deve ser menor ou igual ao preço de venda.");
-            }               
-
-            // Pede o preço novo do produto
-            System.out.println("Digite a novo preço de venda: ");
-            double novoPrecoVenda = in.nextDouble();
-    
             // Validação do novo Preço de venda
             if (novoPrecoVenda < produto.getCostPrice()) {
-                throw new IllegalArgumentException("Preço de venda deve ser maior ou igual ao preço de venda.");
+                throw new IllegalArgumentException("Preço de venda deve ser maior ou igual ao preço de custo.");
             }
 
-                // Atualiza as informações do produto
-                produto.setId(novoId);
-                produto.setName(novoNome);
-                produto.setDesc(novaDesc);
-                produto.setCostPrice(novoPrecoCusto);
-                produto.setSellPrice(novoPrecoVenda);
+            // Remove o produto antigo da lista
+            Produtos produtoAntigo = listProducts.stream()
+                .filter(p -> p.getId() == id)
+                .findFirst()
+                .orElse(null);
 
-                // Atualiza a lista
-                int index = listProducts.indexOf(produto);
-                listProducts.set(index, produto);
-
+                if (produtoAntigo == null) {
+                System.out.println("Produto não encontrado.");
+                return false;
+                }
+                
                 // Formatar a entrada de dados com formatação de números e alinhamento
                 LocalDateTime dataHoraAtual = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
                 String dataHoraFormatada = dataHoraAtual.format(formatter);
                 String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
                 DecimalFormat df = new DecimalFormat("#,##0.00");
-                String newProduct = String.format("Produto %s atualizado com sucesso | DATA: %s| HORA: %s|\n--------------------\nProduto: %s | ID: %d |  Quantidade: %d |Descrição: %s | Preço de Custo: R$%s | Preço de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n--------------------",
-                    produto.getName() ,dataHoraFormatada, horaFormatada, produto.getName(), produto.getId(), produto.getQuantity(), produto.getDesc(),
-                    df.format(produto.getCostPrice()), df.format(produto.getSellPrice()),
-                    df.format(produto.getCostPrice() * produto.getQuantity()),
-                    df.format((produto.getSellPrice() - produto.getCostPrice()) * produto.getQuantity()));
+                String produtoRemovido = String.format("\nProduto %s removido com sucesso | DATA: %s| HORA: %s|\nDados do produto removido\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
+                    produtoAntigo.getName(), dataHoraFormatada, horaFormatada, produtoAntigo.getName(), produtoAntigo.getId(), produtoAntigo.getQuantity(), produtoAntigo.getDesc(),
+                    df.format(produtoAntigo.getCostPrice()), df.format(produtoAntigo.getSellPrice()));
+    
+                try (FileWriter writer = new FileWriter(fileName, true)) {
+                    writer.write(produtoRemovido);
+                }
+
+                listProducts.remove(produtoAntigo);
+
+                // Cria um novo produto com as informações atualizadas
+                Produtos produtoAtualizado = new Produtos(novoNome, novoId, novaQuantidade, novaDesc, novoPrecoCusto, novoPrecoVenda, valorTotalAtualizado, valorLucro);
+
+                // Adiciona a lista e ao arquivo posteriormente
+                listProducts.add(produtoAtualizado);
+
+                // Formatar a entrada de dados com formatação de números e alinhamento
+                String newProduct = String.format("\nProduto %s atualizado com sucesso | DATA: %s| HORA: %s|\n--------------------\nProduto: %s | ID: %d |  Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n--------------------",
+                    produtoAntigo.getName() ,dataHoraFormatada, horaFormatada, produtoAtualizado.getName(), produtoAtualizado.getId(), produtoAtualizado.getQuantity(), produtoAtualizado.getDesc(),
+                    df.format(produtoAtualizado.getCostPrice()), df.format(produtoAtualizado.getSellPrice()),
+                    df.format(produtoAtualizado.getCostPrice() * produtoAtualizado.getQuantity()),
+                    df.format((produtoAtualizado.getSellPrice() - produtoAtualizado.getCostPrice()) * produtoAtualizado.getQuantity()));
 
                 //Escreve os dados no arquivo
                 try (FileWriter writer = new FileWriter(fileName, true)) {
                     writer.write(newProduct);
                 }
                 // Retorna true em caso de sucesso
+                System.out.println("Produto atualizado com sucesso.");
                 return true;
-            
+
         // Retorna falso em caso de cancelamento ou erro        
         } catch (IllegalArgumentException e) {
             System.err.println("Erro: " + e.getMessage());
@@ -264,16 +318,15 @@ public class Estoque {
             System.err.println("Erro: Entrada inválida.");
             in.next(); // Consumir entrada inválida
             return false;
-        } finally {
-            in.close(); // Fechar o Scanner para liberar recursos
         }
     }
+    
     
 
     public void listarProdutos() {
         for (Produtos produto : listProducts) {
-            System.out.printf("ID: %d | Nome: %s | Quantidade: %d\n------------\n",
-                    produto.getId(), produto.getName(), produto.getQuantity());
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            printProdutoInfo(produto, df);
         }
     }
 }
