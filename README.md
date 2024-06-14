@@ -1,4 +1,4 @@
-# Projeto A3 - Controle de Estoque e Vendas
+# Projeto A3 - Controle de Estoque
 
 **Aluno:** João Victor Oliveira de Carvalho
 
