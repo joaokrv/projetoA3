@@ -19,7 +19,7 @@ Obs.: Alguns dos outros requisitos eram -> Imperssão de Etiquetas, Análise de 
 
 ## Diagrama de classes
 
-4. O [Diagrama de classes](https://www.mermaidchart.com/app/projects/5ee6678f-1fe8-4f74-93af-84cf1b79a3e1/diagrams/a5f98193-38c8-4768-9313-d91adfc093c0/version/v0.1/edit) está sendo feito pelo site https://www.mermaidchart.com.
+4. O [Diagrama de classes]([https://www.mermaidchart.com/app/projects/5ee6678f-1fe8-4f74-93af-84cf1b79a3e1/diagrams/a5f98193-38c8-4768-9313-d91adfc093c0/version/v0.1/edit](https://www.mermaidchart.com/raw/a5f98193-38c8-4768-9313-d91adfc093c0?theme=dark&version=v0.1&format=svg)) está sendo feito pelo site https://www.mermaidchart.com.
 
 ## Tecnologia Utilizada
 
