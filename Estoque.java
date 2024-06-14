@@ -22,7 +22,7 @@ public class Estoque {
 
     //Metodo para adicionar o produto na lista e registra-lo no arquivo Registro
     public void addProduto() {
-        System.out.print("-------------------\nDigite o nome do produto: ");
+        System.out.print("----------------------------------\nDigite o nome do produto: ");
         String name = in.nextLine();
     
         System.out.print("\nDigite o ID do produto: ");
@@ -81,13 +81,14 @@ public class Estoque {
             String dataHoraFormatada = dataHoraAtual.format(formatter);
             String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             DecimalFormat df = new DecimalFormat("#,##0.00");
-            String produtoRemovido = String.format("DATA: %s| HORA: %s|\nDados do produto removido\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
+            String produtoRemovido = String.format("\n----------------------------------\nDATA: %s| HORA: %s\nDados do produto removido\n----------------------------------\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
                     dataHoraFormatada, horaFormatada, produtoEncontrado.getName(), produtoEncontrado.getId(), produtoEncontrado.getQuantity(), produtoEncontrado.getDesc(),
                     df.format(produtoEncontrado.getCostPrice()), df.format(produtoEncontrado.getSellPrice()));
     
             try (FileWriter writer = new FileWriter(fileName, true)) {
                 writer.write(produtoRemovido);
             }
+            System.out.println("Produto removido com sucesso.\n----------------------------------");
         } else {
             System.out.println("Produto não encontrado.");
         }
@@ -98,8 +99,8 @@ public class Estoque {
 
         // Formatar a entrada de dados com formatação de números e alinhamento
         DecimalFormat df = new DecimalFormat("#,##0.00");
-        String registerProduct = String.format("----------------------\nProduto: %s | ID: %d | Quantidade: %d | Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n",
-                produto.getName(), produto.getId(), produto.getQuantity(), produto.getDesc(),
+        String registerProduct = String.format("----------------------------------\nProduto Adicionado: %s\n Produto: %s | ID: %d | Quantidade: %d | Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n----------------------------------",
+                produto.getName(), produto.getName(),produto.getId(), produto.getQuantity(), produto.getDesc(),
                 df.format(produto.getCostPrice()), df.format(produto.getSellPrice()),
                 df.format(produto.getCostPrice() * produto.getQuantity()),
                 df.format((produto.getSellPrice() - produto.getCostPrice()) * produto.getQuantity()));
@@ -107,7 +108,7 @@ public class Estoque {
         // Escrever os dados no arquivo
         try (FileWriter writer = new FileWriter(fileName, true)) {
             writer.write(registerProduct + "\n");
-            System.out.println("Produto registrado com sucesso.");
+            System.out.println("\n----------------------------------Produto registrado com sucesso.\n----------------------------------");
         } catch (Exception e) {
             System.err.println("Erro ao escrever no arquivo: " + e.getMessage());
         }
@@ -157,7 +158,7 @@ public class Estoque {
 
     //Metodo para dar print no dados do produto
     private void printProdutoInfo(Produtos produto, DecimalFormat df) {
-        System.out.println("------------------------");
+        System.out.println("----------------------------------");
         System.out.println("Produto encontrado:");
         System.out.println("Nome: " + produto.getName());
         System.out.println("ID: " + produto.getId());
@@ -167,7 +168,7 @@ public class Estoque {
         System.out.println("Preço de Venda: R$" + df.format(produto.getSellPrice()));
         System.out.println("Valor em estoque: R$" + df.format(produto.getCostPrice() * produto.getQuantity()));
         System.out.println("Lucro estimado: R$" + df.format((produto.getSellPrice() - produto.getCostPrice()) * produto.getQuantity()));
-        System.out.println("------------------------");
+        System.out.println("----------------------------------");
     }
 
     @SuppressWarnings("resource")
@@ -279,7 +280,7 @@ public class Estoque {
                 String dataHoraFormatada = dataHoraAtual.format(formatter);
                 String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
                 DecimalFormat df = new DecimalFormat("#,##0.00");
-                String produtoRemovido = String.format("\nProduto %s removido com sucesso | DATA: %s| HORA: %s|\nDados do produto removido\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
+                String produtoRemovido = String.format("Produto %s removido com sucesso | DATA: %s| HORA: %s|\n----------------------------------\nDados do produto removido\n----------------------------------\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
                     produtoAntigo.getName(), dataHoraFormatada, horaFormatada, produtoAntigo.getName(), produtoAntigo.getId(), produtoAntigo.getQuantity(), produtoAntigo.getDesc(),
                     df.format(produtoAntigo.getCostPrice()), df.format(produtoAntigo.getSellPrice()));
     
@@ -296,7 +297,7 @@ public class Estoque {
                 listProducts.add(produtoAtualizado);
 
                 // Formatar a entrada de dados com formatação de números e alinhamento
-                String newProduct = String.format("\nProduto %s atualizado com sucesso | DATA: %s| HORA: %s|\n--------------------\nProduto: %s | ID: %d |  Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n--------------------",
+                String newProduct = String.format("\nProduto %s atualizado com sucesso | DATA: %s| HORA: %s|\n----------------------------------\nProduto: %s | ID: %d |  Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n----------------------------------",
                     produtoAntigo.getName() ,dataHoraFormatada, horaFormatada, produtoAtualizado.getName(), produtoAtualizado.getId(), produtoAtualizado.getQuantity(), produtoAtualizado.getDesc(),
                     df.format(produtoAtualizado.getCostPrice()), df.format(produtoAtualizado.getSellPrice()),
                     df.format(produtoAtualizado.getCostPrice() * produtoAtualizado.getQuantity()),
