@@ -14,7 +14,7 @@ public class Produtos {
 
 
     // Construtor com validações e exceções personalizadas
-    public Produtos(String name, int id, int quantity,  String desc, double costPrice, double sellPrice, double valorEstoque, double lucroEstimado) throws InvalidProductException {
+    public Produtos(String name, int id, int quantity,  String desc, double costPrice, double sellPrice, double valorEstoque, double valorLucro) throws InvalidProductException {
         validateName(name);
         validateQuantity(quantity);
         validateId(id);
