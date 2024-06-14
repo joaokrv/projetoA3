@@ -11,12 +11,12 @@ public class Principal {
         boolean continuar = true;
 
         do {
-            System.out.println("\nMenu Principal:\n-------------------------");
+            System.out.println("\nMenu Principal:\n----------------------------------");
             System.out.println("1. Adicionar Produto");
             System.out.println("2. Remover Produto");
             System.out.println("3. Listar Produtos");
             System.out.println("4. Atualizar Produto");
-            System.out.println("5. Sair\n-------------------------");
+            System.out.println("5. Sair\n----------------------------------");
             System.out.print("Digite sua opção > ");
             String opcaoStr = in.next();
 
@@ -64,6 +64,7 @@ public class Principal {
 
         } while (continuar);
 
-        in.close();
+        in.close(); // Fechar o Scanner após o loop
+
     }
 }
