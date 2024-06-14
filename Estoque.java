@@ -171,156 +171,156 @@ public class Estoque {
         System.out.println("----------------------------------");
     }
 
-    @SuppressWarnings("resource")
-    public boolean atualizarProduto(Produtos produto) throws IOException {
-        Scanner in = new Scanner(System.in);
+  // @SuppressWarnings("resource")
+  // public boolean atualizarProduto(Produtos produto) throws IOException {
+  //   Scanner in = new Scanner(System.in);
     
-        try {
+   //   try {
             // Pede a entrada de dados do usuário.
-            System.out.println("Digite o ID do produto que você está buscando: ");
-            if (!in.hasNextInt()) {
-                throw new InputMismatchException("ID do produto inválido. Digite um número.");
-            }
-            int id = in.nextInt();
+   //       System.out.println("Digite o ID do produto que você está buscando: ");
+   //       if (!in.hasNextInt()) {
+   //           throw new InputMismatchException("ID do produto inválido. Digite um número.");
+   //       }
+   //       int id = in.nextInt();
         
-            in.nextLine(); // Consome a quebra de linha
+   //       in.nextLine(); // Consome a quebra de linha
         
-            System.out.println("Digite o nome agora: ");
-            if (!in.hasNextLine()) {
-                throw new InputMismatchException("Nome do produto inválido. Digite algo.");
-            }
-            String nome = in.nextLine();
+   //       System.out.println("Digite o nome agora: ");
+   //       if (!in.hasNextLine()) {
+   //           throw new InputMismatchException("Nome do produto inválido. Digite algo.");
+   //       }
+   //       String nome = in.nextLine();
 
             // Buscar o produto na lista
-            buscarProduto(nome, id);
+   //       buscarProduto(nome, id);
             
             // Pede nome novo do produto
-            System.out.println("\nAtualizar Produto");
-            System.out.print("Nome: ");
-            String novoNome = in.nextLine();
+   //       System.out.println("\nAtualizar Produto");
+   //       System.out.print("Nome: ");
+   //       String novoNome = in.nextLine();
 
-            System.out.print("ID do produto: ");
-            int novoId = in.nextInt();
-            in.nextLine(); // Consume newline character
-        
-            System.out.print("Descrição: ");
-            String novaDesc = in.nextLine();
+   //       System.out.print("ID do produto: ");
+   //       int novoId = in.nextInt();
+   //       in.nextLine(); // Consume newline character
+   //   
+   //       System.out.print("Descrição: ");
+   //       String novaDesc = in.nextLine();
                     
-            System.out.print("Quantidade: ");
-            int novaQuantidade = in.nextInt();
-            in.nextLine(); // Consume newline character
+   //       System.out.print("Quantidade: ");
+   //       int novaQuantidade = in.nextInt();
+   //       in.nextLine(); // Consume newline character
         
-            System.out.print("Preço de custo: R$ ");
-            double novoPrecoCusto = in.nextDouble();
-            in.nextLine(); // Consume newline character
+   //       System.out.print("Preço de custo: R$ ");
+   //       double novoPrecoCusto = in.nextDouble();
+   //       in.nextLine(); // Consume newline character
         
-            System.out.print("Preço de venda: R$ ");
-            double novoPrecoVenda = in.nextDouble();
-            in.nextLine(); // Consume newline character
+   //       System.out.print("Preço de venda: R$ ");
+   //       double novoPrecoVenda = in.nextDouble();
+   //       in.nextLine(); // Consume newline character
 
-            double valorLucro = (novoPrecoVenda - novoPrecoCusto) * novaQuantidade;
-            double valorTotalAtualizado = novaQuantidade * novoPrecoCusto;
+   //       double valorLucro = (novoPrecoVenda - novoPrecoCusto) * novaQuantidade;
+   //       double valorTotalAtualizado = novaQuantidade * novoPrecoCusto;
             
             //Fechamento do scanner
-            in.close();
+   //       in.close();
 
             // Validação do novo nome
-            if (novoNome == null) {
-                throw new IllegalArgumentException("\nNovo nome não pode ser nulo.");
-            }
+   //       if (novoNome == null) {
+   //           throw new IllegalArgumentException("\nNovo nome não pode ser nulo.");
+   //       }
     
             // Validação do novo ID
-            if (novoId < 0) {
-                throw new IllegalArgumentException("Novo ID precisa ser maior que 0.");
-            }
+   //       if (novoId < 0) {
+   //           throw new IllegalArgumentException("Novo ID precisa ser maior que 0.");
+   //       }
     
             // Verifica se o novo ID já existe na lista
-            for (Produtos outroProduto : listProducts) {
-                if (!outroProduto.equals(produto) && outroProduto.getId() == novoId) {
-                    throw new IllegalArgumentException("ID já existe na lista para o produto: " + outroProduto.getName());
-                }
-            }
+   //       for (Produtos outroProduto : listProducts) {
+   //           if (!outroProduto.equals(produto) && outroProduto.getId() == novoId) {
+   //               throw new IllegalArgumentException("ID já existe na lista para o produto: " + outroProduto.getName());
+   //           }
+   //       }
     
             // Validação da nova descrição
-            if (novaDesc == null) {
-                throw new IllegalArgumentException("Nova descrição não pode ser nula.");
-            }
+   //       if (novaDesc == null) {
+   //           throw new IllegalArgumentException("Nova descrição não pode ser nula.");
+   //       }
     
             // Validação para ver se não possui descrição igual
-            for (Produtos outroProduto : listProducts) {
-                if (!outroProduto.equals(produto) && outroProduto.getName().equalsIgnoreCase(novaDesc)) {
-                    throw new IllegalArgumentException("Descrição já existe na lista.");
-                }
-            }
+   //       for (Produtos outroProduto : listProducts) {
+   //           if (!outroProduto.equals(produto) && outroProduto.getName().equalsIgnoreCase(novaDesc)) {
+   //               throw new IllegalArgumentException("Descrição já existe na lista.");
+   //           }
+   //       }
     
-            // Validação da nova quantidade
-            if (novaQuantidade < 0) {
-                throw new IllegalArgumentException("Quantidade deve ser maior ou igual a zero.");
-            }
+   //       // Validação da nova quantidade
+   //       if (novaQuantidade < 0) {
+   //           throw new IllegalArgumentException("Quantidade deve ser maior ou igual a zero.");
+   //       }
 
             // Validação do novo Preço de venda
-            if (novoPrecoVenda < produto.getCostPrice()) {
-                throw new IllegalArgumentException("Preço de venda deve ser maior ou igual ao preço de custo.");
-            }
+   //       if (novoPrecoVenda < produto.getCostPrice()) {
+   //           throw new IllegalArgumentException("Preço de venda deve ser maior ou igual ao preço de custo.");
+   //       }
 
             // Remove o produto antigo da lista
-            Produtos produtoAntigo = listProducts.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
+   //       Produtos produtoAntigo = listProducts.stream()
+   //           .filter(p -> p.getId() == id)
+   //           .findFirst()
+   //           .orElse(null);
 
-                if (produtoAntigo == null) {
-                System.out.println("Produto não encontrado.");
-                return false;
-                }
+   //           if (produtoAntigo == null) {
+   //           System.out.println("Produto não encontrado.");
+   //           return false;
+   //           }
                 
                 // Formatar a entrada de dados com formatação de números e alinhamento
-                LocalDateTime dataHoraAtual = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-                String dataHoraFormatada = dataHoraAtual.format(formatter);
-                String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-                DecimalFormat df = new DecimalFormat("#,##0.00");
-                String produtoRemovido = String.format("Produto %s removido com sucesso | DATA: %s| HORA: %s|\n----------------------------------\nDados do produto removido\n----------------------------------\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
-                    produtoAntigo.getName(), dataHoraFormatada, horaFormatada, produtoAntigo.getName(), produtoAntigo.getId(), produtoAntigo.getQuantity(), produtoAntigo.getDesc(),
-                    df.format(produtoAntigo.getCostPrice()), df.format(produtoAntigo.getSellPrice()));
+   //           LocalDateTime dataHoraAtual = LocalDateTime.now();
+   //           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+   //           String dataHoraFormatada = dataHoraAtual.format(formatter);
+   //           String horaFormatada = dataHoraAtual.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+   //           DecimalFormat df = new DecimalFormat("#,##0.00");
+   //           String produtoRemovido = String.format("Produto %s removido com sucesso | DATA: %s| HORA: %s|\n----------------------------------\nDados do produto removido\n----------------------------------\nProduto: %s | ID: %d | Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s |\n----------------------------------",
+   //               produtoAntigo.getName(), dataHoraFormatada, horaFormatada, produtoAntigo.getName(), produtoAntigo.getId(), produtoAntigo.getQuantity(), produtoAntigo.getDesc(),
+   //               df.format(produtoAntigo.getCostPrice()), df.format(produtoAntigo.getSellPrice()));
     
-                try (FileWriter writer = new FileWriter(fileName, true)) {
-                    writer.write(produtoRemovido);
-                }
+   //           try (FileWriter writer = new FileWriter(fileName, true)) {
+   //               writer.write(produtoRemovido);
+   //           }
 
-                listProducts.remove(produtoAntigo);
+   //           listProducts.remove(produtoAntigo);
 
                 // Cria um novo produto com as informações atualizadas
-                Produtos produtoAtualizado = new Produtos(novoNome, novoId, novaQuantidade, novaDesc, novoPrecoCusto, novoPrecoVenda, valorTotalAtualizado, valorLucro);
+   //           Produtos produtoAtualizado = new Produtos(novoNome, novoId, novaQuantidade, novaDesc, novoPrecoCusto, novoPrecoVenda, valorTotalAtualizado, valorLucro);
 
                 // Adiciona a lista e ao arquivo posteriormente
-                listProducts.add(produtoAtualizado);
+   //           listProducts.add(produtoAtualizado);
 
                 // Formatar a entrada de dados com formatação de números e alinhamento
-                String newProduct = String.format("\nProduto %s atualizado com sucesso | DATA: %s| HORA: %s|\n----------------------------------\nProduto: %s | ID: %d |  Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n----------------------------------",
-                    produtoAntigo.getName() ,dataHoraFormatada, horaFormatada, produtoAtualizado.getName(), produtoAtualizado.getId(), produtoAtualizado.getQuantity(), produtoAtualizado.getDesc(),
-                    df.format(produtoAtualizado.getCostPrice()), df.format(produtoAtualizado.getSellPrice()),
-                    df.format(produtoAtualizado.getCostPrice() * produtoAtualizado.getQuantity()),
-                    df.format((produtoAtualizado.getSellPrice() - produtoAtualizado.getCostPrice()) * produtoAtualizado.getQuantity()));
+   //           String newProduct = String.format("\nProduto %s atualizado com sucesso | DATA: %s| HORA: %s|\n----------------------------------\nProduto: %s | ID: %d |  Quantidade: %d |Descricao: %s | Preco de Custo: R$%s | Preco de Venda: R$%s | Valor total em estoque: R$%s | Lucro estimado: R$%s\n----------------------------------",
+   //               produtoAntigo.getName() ,dataHoraFormatada, horaFormatada, produtoAtualizado.getName(), produtoAtualizado.getId(), produtoAtualizado.getQuantity(), produtoAtualizado.getDesc(),
+   //               df.format(produtoAtualizado.getCostPrice()), df.format(produtoAtualizado.getSellPrice()),
+   //               df.format(produtoAtualizado.getCostPrice() * produtoAtualizado.getQuantity()),
+   //               df.format((produtoAtualizado.getSellPrice() - produtoAtualizado.getCostPrice()) * produtoAtualizado.getQuantity()));
 
                 //Escreve os dados no arquivo
-                try (FileWriter writer = new FileWriter(fileName, true)) {
-                    writer.write(newProduct);
-                }
+    //          try (FileWriter writer = new FileWriter(fileName, true)) {
+    //              writer.write(newProduct);
+    //          }
                 // Retorna true em caso de sucesso
-                System.out.println("Produto atualizado com sucesso.");
-                return true;
+    //          System.out.println("Produto atualizado com sucesso.");
+    //          return true;
 
         // Retorna falso em caso de cancelamento ou erro        
-        } catch (IllegalArgumentException e) {
-            System.err.println("Erro: " + e.getMessage());
-            return false;
-        } catch (InputMismatchException e) {
-            System.err.println("Erro: Entrada inválida.");
-            in.next(); // Consumir entrada inválida
-            return false;
-        }
-    }
+    //  } catch (IllegalArgumentException e) {
+    //     System.err.println("Erro: " + e.getMessage());
+    //      return false;
+    //  } catch (InputMismatchException e) {
+    //      System.err.println("Erro: Entrada inválida.");
+    //      in.next(); // Consumir entrada inválida
+    //      return false;
+    //  }
+    //}
     
     
 
