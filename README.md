@@ -2,6 +2,8 @@
 
 **Aluno:** João Victor Oliveira de Carvalho
 
+**Faculdade:** Centro Universitário UniBH - Campos Buritis
+
 **Professores:** Montanha e Otaviano
 
 ## Problema
