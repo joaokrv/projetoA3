@@ -15,7 +15,6 @@ public class Principal {
             System.out.println("1. Adicionar Produto");
             System.out.println("2. Remover Produto");
             System.out.println("3. Listar Produtos");
-//          System.out.println("4. Atualizar Produto");
             System.out.println("5. Sair\n----------------------------------");
             System.out.print("Digite sua opção > ");
             String opcaoStr = in.next();
@@ -45,13 +44,6 @@ public class Principal {
                 case 3:
                     estoque.listarProdutos();
                     break;
- //             case 4:
- //                 try {
- //                    estoque.atualizarProduto(produto);
- //                 } catch (IOException e) {
- //                     System.err.println("Erro ao atualizar produto: " + e.getMessage());
- //                 }
- //                 break;
                 case 5:
                     System.out.println("Saindo...");
                     break;
